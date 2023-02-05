@@ -5,11 +5,13 @@ let container = document.querySelector('.grid-container');
     for(let i = 0; i < numRows; i++) {
         for(let j = 0; j < numCols; j++) {
             let newCell = document.createElement('div');
-            newCell.className = `cell row-${i} col-${j}`;
+            newCell.className = 'cell';
+            newCell.dataset.row = i;
+            newCell.dataset.col = j;
             container.appendChild(newCell);
         }
     }
-})(30, 40);
+})(20, 40);
 
 // add event listener to each grid cell that toggles background color on click
 let cells = document.querySelectorAll('.cell');
@@ -17,11 +19,72 @@ let cells = document.querySelectorAll('.cell');
 (function toggleColorOnClick() {
     for(let i = 0; i < cells.length; i++) {
         cells[i].addEventListener('click', () => {
-            if(cells[i].style.backgroundColor === '') {
-                cells[i].style.backgroundColor = 'black';
-            } else {
-                cells[i].style.backgroundColor = '';
-            }
+            toggleColor(cells[i]);
         });
     }
 })();
+
+function toggleColor(cell) {
+    if(cell.style.backgroundColor === '') {
+        cell.style.backgroundColor = 'black';
+    } else {
+        cell.style.backgroundColor = '';
+    }
+}
+
+function getTopNeighbor(cell) {
+    let topRow = Number(cell.dataset.row) - 1;
+    let topCol = Number(cell.dataset.col);
+    return document.querySelector(`div[data-row="${topRow}"][data-col="${topCol}"]`);
+}
+
+function getTopLeftNeighbor(cell) {
+    let topLeftRow = Number(cell.dataset.row) - 1;
+    let topLeftCol = Number(cell.dataset.col) - 1;
+    return document.querySelector(`div[data-row="${topLeftRow}"][data-col="${topLeftCol}"]`);
+}
+
+function getTopRightNeighbor(cell) {
+    let topRightRow = Number(cell.dataset.row) - 1;
+    let topRightCol = Number(cell.dataset.col) + 1;
+    return document.querySelector(`div[data-row="${topRightRow}"][data-col="${topRightCol}"]`);
+}
+
+function getLeftNeighbor(cell) {
+    let leftRow = Number(cell.dataset.row);
+    let leftCol = Number(cell.dataset.col) - 1;
+    return document.querySelector(`div[data-row="${leftRow}"][data-col="${leftCol}"]`);
+}
+
+function getRightNeighbor(cell) {
+    let rightRow = Number(cell.dataset.row);
+    let rightCol = Number(cell.dataset.col) + 1;
+    return document.querySelector(`div[data-row="${rightRow}"][data-col="${rightCol}"]`);
+}
+
+function getBottomNeighbor(cell) {
+    let bottomRow = Number(cell.dataset.row) + 1;
+    let bottomCol = Number(cell.dataset.col);
+    return document.querySelector(`div[data-row="${bottomRow}"][data-col="${bottomCol}"]`);
+}
+
+function getBottomLeftNeighbor(cell) {
+    let bottomLeftRow = Number(cell.dataset.row) + 1;
+    let bottomLeftCol = Number(cell.dataset.col) - 1;
+    return document.querySelector(`div[data-row="${bottomLeftRow}"][data-col="${bottomLeftCol}"]`);
+}
+
+function getBottomRightNeighbor(cell) {
+    let bottomRightRow = Number(cell.dataset.row) + 1;
+    let bottomRightCol = Number(cell.dataset.col) + 1;
+    return document.querySelector(`div[data-row="${bottomRightRow}"][data-col="${bottomRightCol}"]`);
+}
+
+function isCellAlive(cell) {
+    if(cell.backgroundColor !== '') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
