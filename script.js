@@ -1,3 +1,4 @@
+// create grid cells and add them to the container
 let container = document.querySelector('.grid-container');
 
 (function createGridCells(numRows, numCols) {
@@ -9,3 +10,18 @@ let container = document.querySelector('.grid-container');
         }
     }
 })(30, 40);
+
+// add event listener to each grid cell that toggles background color on click
+let cells = document.querySelectorAll('.cell');
+
+(function toggleColorOnClick() {
+    for(let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener('click', () => {
+            if(cells[i].style.backgroundColor === '') {
+                cells[i].style.backgroundColor = 'black';
+            } else {
+                cells[i].style.backgroundColor = '';
+            }
+        });
+    }
+})();
