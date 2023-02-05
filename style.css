@@ -2,7 +2,7 @@
     width: 90vw;
     display: grid;
     grid-template-columns: repeat(40, 30px);
-    grid-template-rows: repeat(30, 30px);
+    grid-template-rows: repeat(20, 30px);
 }
 
 .cell {
@@ -10,10 +10,10 @@
     border-top: 1px solid black;
 }
 
-.col-39 {
+div[data-col="39"] {
     border-right: 1px solid black;
 }
 
-.row-29 {
+div[data-row="19"] {
     border-bottom: 1px solid black;
 }
