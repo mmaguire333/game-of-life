@@ -111,5 +111,29 @@ function countLiveNeighbors(cell) {
 }
 
 function playOneStep() {
+    let toBeColored = [];
+    let toBeUncolored = [];
+    let cells = document.querySelectorAll('.cell');
 
+    for(let i = 0; i < cells.length; i++) {
+        if(isCellAlive(cells[i])) {
+            if(countLiveNeighbors(cells[i]) < 2) {
+                toBeUncolored.push(cells[i]);
+            } else if(countLiveNeighbors(cells[i]) > 3) {
+                toBeUncolored.push(cells[i]);
+            }
+        }else {
+            if(countLiveNeighbors(cells[i]) === 3) {
+                toBeColored.push(cells[i]);
+            }
+        }
+    }
+
+    for(let i = 0; i < toBeColored.length; i++) {
+        toBeColored[i].style.backgroundColor = 'black';
+    }
+
+    for(let i = 0; i < toBeUncolored.length; i++) {
+        toBeUncolored[i].style.backgroundColor = '';
+    }
 }
