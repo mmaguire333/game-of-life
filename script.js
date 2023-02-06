@@ -81,10 +81,35 @@ function getBottomRightNeighbor(cell) {
 }
 
 function isCellAlive(cell) {
-    if(cell.backgroundColor !== '') {
+    if(!cell) {
+        return false;
+    } else if(cell.style.backgroundColor === 'black') {
         return true;
     } else {
         return false;
     }
 }
 
+function countLiveNeighbors(cell) {
+    let count = 0;
+    let neighbors = [];
+    neighbors.push(getTopNeighbor(cell));
+    neighbors.push(getTopLeftNeighbor(cell));
+    neighbors.push(getTopRightNeighbor(cell));
+    neighbors.push(getLeftNeighbor(cell));
+    neighbors.push(getRightNeighbor(cell));
+    neighbors.push(getBottomNeighbor(cell));
+    neighbors.push(getBottomLeftNeighbor(cell));
+    neighbors.push(getBottomRightNeighbor(cell));
+
+    for(let i = 0; i < neighbors.length; i++) {
+        if(isCellAlive(neighbors[i])) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function playOneStep() {
+
+}
