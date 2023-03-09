@@ -1,1 +1,3 @@
-# game-of-life
+# The Game of Life
+
+This project is an implementation of John Conway's Game of Life. The game of life is a cellular automaton where on each step the cells of an infinite grid are updated according to a small set of simple rules. While the Game of Life is played on an infinite grid, this implementation uses a finite grid and has the edges of the grid wrap on themsleves. This changes the behavior of some patterns that will grow to overflow the grid as there could be some self intersection that would not happen on an infinite grid. To create a pattern simply click on the cells of the grid to color them in and then press play to watch the pattern evolve.

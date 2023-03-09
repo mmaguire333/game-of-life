@@ -5,16 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
     <title>Game of Life</title>
 </head>
 <body>
+    <h1>The Game of Life</h1>
     <div class="grid-container"></div>
+    <div class="iteration-count">Number of Iterations: 0</div>
     <div class="buttons">
         <button type="button" id="play-button">Play</button>
-        <button type="button" id="stop-button">Stop</button>
+        <button type="button" id="pause-button">Pause</button>
         <button type="button" id="reset-button">Reset</button>
-        <button type="button" id="clear-button">Clear</button>
+    </div>
+    <div class="preset-buttons">
+        <button type="button" id="preset-one">Preset 1: Glider</button>
+        <button type="button" id="preset-two">Preset 2: Spaceship</button>
+        <button type="button" id="preset-three">Preset 3: Tumbler</button>
+    </div>
+    <div class="description">
+        <h2>About</h2>
+        <p>
+            Welcome to <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">The Game of Life</a>, an interesting example of a
+            <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a> created by British mathematician John Conway.
+            The Game of Life is played on a grid where each cell is said to be either alive or dead. On each iteration of the game every
+            cell is updated according to its current state, the state of its eight neighbors (horizontal, vertical, and diagonal), and a
+            simple set of rules about how many living neighbors each cell has. The rules are as follows:
+        </p>
+        <ol>
+            <li>A living cell with less than two living neighbors dies.</li>
+            <li>A living cell with two or three living neighbors lives on.</li>
+            <li>A living cell with more than three living neighbors dies.</li>
+            <li>A dead cell with exactly three living neighbors becomes a living cell.</li>
+        </ol>
+        <p>
+            Click on the cells above to color them in and then press play to see how they evolve, or press one of
+            the preset buttons above to see some examples of patterns that others have discoverd. If you
+            would like to see other examples of known patterns check out this Game of Life <a href="https://conwaylife.appspot.com/library/">pattern library</a>.
+        </p> 
+        <p class="disclaimer">
+            <em>Note:   </em>The Game of Life takes place on an infinite grid. Due to the bounded nature of the grid above, this implementation wraps the edges of the
+            grid on itself. For smaller patterns this will make no difference, but a pattern that grows to overflow the grid may intersect with itself in a way that
+            would not happen on an infinite grid.
+        </p>
     </div>
 </body>
-</html>
+</html> 
